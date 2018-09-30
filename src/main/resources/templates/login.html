@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: common_header(~{::title}, ~{::link})">
+    <title>Login</title>
+
+    <!--custom css -->
+    <link href="../static/css/styles/login.css" th:href="@{/css/styles/login.css}" rel="stylesheet">
+</head>
+
+<body>
+<nav th:replace="common :: nav1"/>
+<div class="container">
+    <!-- Material form login -->
+    <form class="text-center border border-light p-5" action="/login" method="post">
+
+        <p class="h4 mb-4">Sign in</p>
+
+        <!-- Username -->
+        <input type="text" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Username" name="username">
+
+        <!-- Password -->
+        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" name="password">
+
+        <div class="d-flex justify-content-around">
+            <div>
+                <!-- Remember me -->
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                    <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                </div>
+            </div>
+            <div>
+                <!-- Forgot password -->
+                <a href="">Forgot password?</a>
+            </div>
+        </div>
+
+        <!-- Sign in button -->
+        <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+
+        <!-- Register -->
+        <p>Not a member?
+            <a href="">Register</a>
+        </p>
+
+    </form>
+</div>
+
+<th:block th:replace="base :: scripts"/>
+</body>
+</html>

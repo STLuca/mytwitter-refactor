@@ -1,0 +1,31 @@
+<section th:fragment="tweet1(tweet)"  class="my-5">
+
+    <!-- Card header
+    <div  class="card-header border-0 font-weight-bold d-flex justify-content-between">
+        <p class="mr-4 mb-0">About the author</p>
+        <ul class="list-unstyled list-inline mb-0">
+            <li class="list-inline-item"><a href="" class="mr-3"><i class="fa fa-envelope mr-1"></i>Reply</a></li>
+            <li class="list-inline-item"><a href="" class="mr-3"><i class="fa fa-user mr-1"></i>See profile</a></li>
+            <li class="list-inline-item"><a href="" class="mr-3"><i class="fa fa-thumbs-up mr-1"></i>Follow</a></li>
+        </ul>
+    </div>
+-->
+    <div class="media mt-4 px-1">
+        <img class="card-img-100 d-flex z-depth-1 mr-3" th:src="${tweet.tweetVal.profilePic}" alt="Generic placeholder image">
+        <div class="media-body">
+            <h5 class="font-weight-bold mt-0">
+                <a href="" th:text="${tweet.tweetVal.username}"></a>
+            </h5>
+            <p th:text="${tweet.tweetVal.message}"></p>
+        </div>
+    </div>
+
+    <div class="card-header border-0 font-weight-bold">
+        <ul class="list-unstyled list-inline mb-0">
+            <li class="list-inline-item"><a th:text="|${tweet.tweetVal.replycount} comments|"></a></li>
+            <li class="list-inline-item"><a href="" class="mr-3"><i class="fa fa-user mr-1"></i>See profile</a></li>
+            <li class="list-inline-item"><a href="" class="mr-3"><i class="fa fa-thumbs-up mr-2"></i>Like</a></li>
+        </ul>
+
+    </div>
+</section>

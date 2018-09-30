@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: common_header(~{::title}, ~{::link})">
+    <title>Home</title>
+
+    <!--custom css -->
+    <link href="../static/css/styles/home.css" th:href="@{/css/styles/home.css}" rel="stylesheet">
+</head>
+
+<body>
+    <nav th:replace="common :: nav1"/>
+    home page
+
+
+    <table>
+        <tr>
+            <th>message</th>
+        </tr>
+        <div th:each="tweet:${tweets.content}">
+            <section th:replace="tweet :: tweet1(${tweet})"></section>
+        </div>
+    </table>
+
+
+    <nav th:replace="common :: pagination(${tweets})"></nav>
+
+    <th:block th:replace="base :: scripts"/>
+</body>
+</html>
