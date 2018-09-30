@@ -26,7 +26,7 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
     User findByUsername(String username);
 
-    @Query("SELECT u FROM UserView u WHERE u.user_id = :userID AND u.queryingUser = ?#{principal.id}")
+    @Query("SELECT u FROM UserView u WHERE u.userVal.user_id = :userID AND u.queryingUser = ?#{principal.id}")
     UserView getUser(
             @Param("userID") Long userID
     );
