@@ -216,6 +216,6 @@ SELECT
 	u.profile_pic,
 	COUNT(n) as notifications
 FROM users u
-JOIN notificationsview n ON u.id = n.reciever_id
-WHERE n.notification_timestamp > u.last_notification_check
+LEFT JOIN notificationsview n ON u.id = n.reciever_id
+                              AND n.notification_timestamp > u.last_notification_check
 GROUP BY u.id;

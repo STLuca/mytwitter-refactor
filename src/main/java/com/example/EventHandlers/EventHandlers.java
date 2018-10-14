@@ -21,6 +21,7 @@ public class EventHandlers {
         if(user.getProfilePic() == null || user.getProfilePic().isEmpty()){
             user.setProfilePic("https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png");
         }
+        user.setLastNotificationCheck(System.currentTimeMillis());
     }
 
 }
