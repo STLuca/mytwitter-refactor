@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/base :: common_header(~{::title}, ~{})">
+    <title>User</title>
+
+</head>
+
+<body>
+<nav th:replace="fragments/common :: nav1"/>
+
+
+<div th:replace="fragments/TweetTable :: tweet_table(${tweets.content})"></div>
+
+<nav th:replace="fragments/common :: pagination(${pageLinks})"></nav>
+
+
+
+<!--
+<table class="table table-striped">
+    <tr>
+        <th scope="col">PAGE NUMBER</th>
+        <th scope="col">LINK</th>
+        <th scope="col">ACTIVE</th>
+
+    </tr>
+    <tr th:each="pageLink : ${pageLinks}">
+        <td th:text="${pageLink.pageNumber}">ID</td>
+        <td th:text="${pageLink.link}">message</td>
+        <td th:text="${pageLink.active}">UserID</td>
+
+    </tr>
+</table>
+-->
+
+
+<th:block th:replace="fragments/base :: scripts"/>
+</body>
+</html>

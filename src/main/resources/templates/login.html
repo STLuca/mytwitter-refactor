@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="base :: common_header(~{::title}, ~{::link})">
+<head th:replace="fragments/base :: common_header(~{::title}, ~{::link})">
     <title>Login</title>
 
     <!--custom css -->
@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<nav th:replace="common :: nav1"/>
+<nav th:replace="fragments/common :: nav1"/>
 <div class="container">
     <!-- Material form login -->
     <form class="text-center border border-light p-5" action="/login" method="post">
@@ -48,6 +48,6 @@
     </form>
 </div>
 
-<th:block th:replace="base :: scripts"/>
+<th:block th:replace="fragments/base :: scripts"/>
 </body>
 </html>

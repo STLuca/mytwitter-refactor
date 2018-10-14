@@ -1,0 +1,36 @@
+<div th:fragment="user_table(users)">
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">USERNAME</th>
+            <th scope="col">PROFILE PIC</th>
+            <th scope="col">TWEETS</th>
+            <th scope="col">FOLLOWING NO</th>
+            <th scope="col">FOLLOWERS NO</th>
+            <th scope="col">LIKES NO</th>
+            <th scope="col">FOLLOWING</th>
+            <th scope="col">FOLLOWER</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.userVal.user.id}">ID</td>
+            <td>
+                <a th:href="${user.userVal.links.user}" th:text="${user.userVal.username}"></a>
+            </td>
+            <td th:text="${user.userVal.profilePic}">ID</td>
+            <td>
+                <a th:href="${user.userVal.links.user}" th:text="${user.userVal.tweet_count}"></a>
+            </td>
+            <td>
+                <a th:href="${user.userVal.links.following}" th:text="${user.userVal.following_count}"></a>
+            </td>
+            <td>
+                <a th:href="${user.userVal.links.followers}" th:text="${user.userVal.follower_count}"></a>
+            </td>
+            <td>
+                <a th:href="${user.userVal.links.likes}" th:text="${user.userVal.like_count}"></a>
+            </td>
+            <td th:text="${user.userVal.following}">ID</td>
+            <td th:text="${user.userVal.follower}">ID</td>
+        </tr>
+    </table>
+</div>

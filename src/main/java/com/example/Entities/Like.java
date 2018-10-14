@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Like {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long likeID;
 
     @CreatedDate

@@ -14,8 +14,15 @@ spring:
       ddl-auto: create-drop
 logging:
   level:
-    org.springframework.security: DEBUG
+    org.springframework.security: INFO
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+management.endpoint.health.show-details: when-authorized
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation: true
 spring.jpa.properties.hibernate.hbm2ddl.import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
 

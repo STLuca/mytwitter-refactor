@@ -10,16 +10,19 @@ public class PrincipalUser extends User {
 
     private final Long id;
     private final String profilePic;
+    private final Long notifications;
 
     public PrincipalUser(
             String username,
             String password,
             List<GrantedAuthority> authorities,
             Long id,
-            String proflePic) {
+            String proflePic,
+            Long notifications) {
         super(username, password, authorities);
         this.id = id;
         this.profilePic = proflePic;
+        this.notifications = notifications;
     }
 
     public Long getId() {
@@ -28,5 +31,9 @@ public class PrincipalUser extends User {
 
     public String getProfilePic() {
         return profilePic;
+    }
+
+    public Long getNotifications() {
+        return notifications;
     }
 }

@@ -1,0 +1,22 @@
+<div th:fragment="notifications_table(notifications)">
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">USERNAME</th>
+            <th scope="col">PICTURE</th>
+            <th scope="col">TWEET ID</th>
+            <th scope="col">TIMESTAMP</th>
+            <th scope="col">TYPE</th>
+        </tr>
+        <tr th:each="notification : ${notifications}">
+            <td>
+                <a th:href="${notification.links.user}" th:text="${notification.username}"></a>
+            </td>
+            <td th:text="${notification.picture}"></td>
+            <td>
+                <a th:href="${notification.links.tweet}" th:text="${notification.tweet.id}"></a>
+            </td>
+            <td th:text="${notification.notificationTimestamp}"></td>
+            <td th:text="${notification.notificationType}"></td>
+        </tr>
+    </table>
+</div>

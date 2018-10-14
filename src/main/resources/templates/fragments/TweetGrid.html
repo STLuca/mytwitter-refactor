@@ -1,0 +1,105 @@
+<div class="tweet"  th:fragment="tweet_grid(tweet)">
+    <div class="wrapper">
+
+        <!--
+        <a th:href="${tweet.tweetVal.links.tweet}" th:text="${tweet.tweetVal.tweet_id}"></a>
+        <div th:text="${tweet.tweetVal.userid}">UserID</div>
+        <div th:text="${tweet.tweetVal.liked}">Liked</div>
+
+        -->
+
+        <div class="message">
+            <p th:text="${tweet.message}">
+                message
+            </p>
+        </div>
+
+        <div class="pic">
+            <img th:src="${tweet.profilePic}">
+        </div>
+
+        <div class="username">
+            <a  th:href="${tweet.links.user}" th:text="${tweet.username}"></a>
+        </div>
+
+        <div class="timestamp">
+            <p th:text="${tweet.tweet_timestamp}"></p>
+        </div>
+
+        <div class="likeCount">
+            <a th:href="${tweet.links.likes}" th:text="${tweet.likecount}"></a>
+        </div>
+
+        <div class="replyCount" >
+            <a th:text="${tweet.replycount}">
+                replies
+            </a>
+        </div>
+
+        <div class="tags">
+            <span th:each="tag : ${tweet.tagsList}">
+                <a th:href="${tag.link}" th:text="${tag.value}"></a>
+            </span>
+        </div>
+
+        <div class="mentions">
+            <span th:each="mention : ${tweet.mentionsList}">
+                <a th:href="${mention.link}" th:text="${mention.username}"></a>
+            </span>
+        </div>
+
+        <div class="replyTo">
+            <p  th:text="${tweet.replyto}">Replied to</p>
+        </div>
+
+    </div>
+
+    <div class="tweet">
+        <div class="user">
+            <img th:src="${tweet.profilePic}">
+            <a  th:href="${tweet.links.user}" th:text="${tweet.username}"></a>
+        </div>
+        <div class="messageC">
+            <p th:text="${tweet.message}"></p>
+            <p>
+            <span th:each="tag : ${tweet.tagsList}">
+                <a th:href="${tag.link}" th:text="${tag.value}"></a>
+            </span>
+            </p>
+            <p>
+            <span th:each="mention : ${tweet.mentionsList}">
+                <a th:href="${mention.link}" th:text="${mention.username}"></a>
+            </span>
+            </p>
+        </div>
+        <div class="footerC">
+            <div class="replyTo">
+                <p  th:text="${tweet.replyto}">Replied to</p>
+            </div>
+            <div class="likeCount">
+                <a th:href="${tweet.links.likes}" th:text="${tweet.likecount}"></a>
+            </div>
+
+            <div class="replyCount" >
+                <a th:text="${tweet.replycount}">
+                    replies
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="media d-block d-md-flex mt-3">
+        <img class="card-img-64 d-flex mx-auto mb-3" src="https://mdbootstrap.com/img/Photos/Avatars/img (30).jpg" alt="Generic placeholder image">
+        <div class="media-body text-center text-md-left ml-md-3 ml-0">
+            <h5 class="font-weight-bold mt-0">
+                <a href="">Caroline Horwitz</a>
+                <a href="" class="pull-right">
+                    <i class="fa fa-reply"></i>
+                </a>
+            </h5>
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti
+            quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa officia deserunt mollitia animi, id est laborum et dolorum fuga.
+        </div>
+    </div>
+</div>
+

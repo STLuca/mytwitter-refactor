@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Follow {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long followID;
 
     @CreatedDate

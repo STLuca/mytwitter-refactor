@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Value;
 import org.hibernate.annotations.Immutable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -26,6 +27,8 @@ public class FollowingView {
     private Long querying_user;
     @JsonIgnore
     private Long followedbyuser;
+    @JsonIgnore
+    private String followedByUsername;
 
 
 }

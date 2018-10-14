@@ -1,0 +1,43 @@
+INSERT INTO users Values
+    (2, 0, '$2a$04$ulrrvKPPOk.FvKNPhffJWe0TjTbMYT6e0k0egroxaEvf6bL6dYNM2', 'https://amp.businessinsider.com/images/5899ffcf6e09a897008b5c04-750-750.jpg', 'bob'),
+    (3, 0, 'bbb', '', 'susan'),
+    (4, 0, 'ccc', '', 'larry');
+
+INSERT INTO tweets Values
+	(4, 0, 'tweet 1 by bob', 2),
+	(5, 1, 'tweet 2 by bob', 2),
+	(6, 2, 'tweet 3 by susan', 3),
+	(7, 3, 'tweet 4 by susan', 3),
+	(8, 4, 'tweet 5 by larry', 4),
+	(9, 5, 'tweet 6 by larry', 4),
+	(22, 6, 'tweet 3 by bob', 2),
+	(23, 7, 'tweet 4 by bob', 2),
+	(24, 8, 'tweet 5 by bob', 2),
+	(25, 9, 'tweet 6 by bob', 2),
+	(26, 10, 'tweet 7 by bob', 2),
+	(27, 11, 'tweet 8 by bob', 2);
+
+INSERT INTO likes Values
+    (10, 6, 6, 2),
+    (11, 7, 9, 2),
+    (12, 8, 4, 3),
+    (13, 9, 5, 3),
+    (14, 10, 4, 4),
+    (15, 11, 6, 4);
+
+INSERT INTO follows Values
+	(16, 11, 2, 2),
+	(17, 12, 2, 3),
+	(18, 13, 2, 4),
+	(19, 14, 3, 2),
+	(20, 15, 3, 4);
+
+INSERT INTO tags Values
+    (4, 'first'),
+    (4, 'new'),
+    (5, 'second');
+
+INSERT INTO replies Values
+    (4,5),
+    (4,6),
+    (6,7);

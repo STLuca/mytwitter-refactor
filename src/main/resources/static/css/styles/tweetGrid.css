@@ -1,0 +1,82 @@
+.tweet {
+    margin-top: 10px;
+}
+
+.wrapper {
+    max-width: 600px;
+    max-height: 240px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+    grid-template-areas:
+        "pic pic . . . . . . . . . ."
+        "pic pic username username username username . . . . . ."
+        "pic pic . . . . . . . . . ."
+        "message message message message message message message message message message message message"
+        "message message message message message message message message message message message message"
+        "message message message message message message message message message message message message"
+        "message message message message message message message message message message message message"
+        "mentions mentions mentions mentions mentions mentions mentions mentions mentions mentions mentions mentions"
+        "tags tags tags tags tags tags tags tags tags tags tags tags"
+        ". replyTo . replyCount replyCount . likeCount likeCount . timestamp timestamp timestamp"
+        ". replyTo . replyCount replyCount . likeCount likeCount . timestamp timestamp timestamp"
+
+}
+
+img {
+    max-width: 100%;
+    max-height:100%;
+    object-fit: cover;
+}
+
+p {
+    text-align: center;
+}
+
+.wrapper div {
+    border: 1px solid black;
+
+}
+
+.pic {
+    grid-area: pic;
+}
+
+.username {
+    grid-area: username;
+}
+
+.message {
+    grid-area: message;
+}
+
+.mentions {
+    grid-area: mentions;
+}
+
+.tags {
+    grid-area: tags;
+}
+
+.timestamp {
+    grid-area: timestamp;
+}
+
+.replyTo {
+    grid-area: replyTo;
+}
+
+.replyCount {
+    grid-area: replyCount;
+}
+
+.likeCount {
+    grid-area: likeCount;
+}
+
+.footerC > div {
+  display: inline-block;
+}
+

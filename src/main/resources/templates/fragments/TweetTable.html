@@ -1,0 +1,48 @@
+<div th:fragment="tweet_table(tweets)">
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">MESSAGE</th>
+            <th scope="col">USER ID</th>
+            <th scope="col">USERNAME</th>
+            <th scope="col">PROFILE PIC</th>
+            <th scope="col">TIMESTAMP</th>
+            <th scope="col">LIKES</th>
+            <th scope="col">REPLIES</th>
+            <th scope="col">REPLIED TO</th>
+            <th scope="col">LIKED</th>
+            <th scope="col">TAGS</th>
+            <th scope="col">MENTIONS</th>
+        </tr>
+        <tr th:each="tweet : ${tweets}">
+            <td >
+                <a th:href="${tweet.tweetVal.links.tweet}" th:text="${tweet.tweetVal.tweet.id}"></a>
+            </td>
+            <td th:text="${tweet.tweetVal.message}">message</td>
+            <td th:text="${tweet.tweetVal.user.id}">UserID</td>
+            <td >
+                <a th:href="${tweet.tweetVal.links.user}" th:text="${tweet.tweetVal.username}"></a>
+            </td>
+            <td th:text="${tweet.tweetVal.profilePic}">ProfilePicUrl</td>
+            <td th:text="${tweet.tweetVal.tweet_timestamp}">timestamp</td>
+            <td >
+                <a th:href="${tweet.tweetVal.links.likes}" th:text="${tweet.tweetVal.likecount}"></a>
+            </td>
+            <td th:text="${tweet.tweetVal.replycount}">replies</td>
+            <td th:text="${tweet.tweetVal.replyto}">Replied to</td>
+            <td th:text="${tweet.tweetVal.liked}">Liked</td>
+            <td>
+                <ul>
+                    <li th:each="tag : ${tweet.tweetVal.tagsList}">
+                        <a th:href="${tag.link}" th:text="${tag.value}"></a>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li th:each="mention : ${tweet.tweetVal.mentions}" th:text="${mention.username}"></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>

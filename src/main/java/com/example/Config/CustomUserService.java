@@ -1,6 +1,7 @@
 package com.example.Config;
 
 import com.example.Repositories.UserRepository;
+import com.example.Views.UserPrincipalView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,7 +25,7 @@ public class CustomUserService implements UserDetailsService {
 
         System.out.println("--------------------------------------------------------");
         System.out.println("username: " + username);
-        com.example.Entities.User user = userRepository.findByUsername(username);
+        UserPrincipalView user = userRepository.findUserPrincipal(username);
 
         if (user == null) {
             throw new UsernameNotFoundException("User '" + username + "' not found.");
@@ -38,7 +39,8 @@ public class CustomUserService implements UserDetailsService {
                 user.getPassword(),
                 authorities,
                 user.getId(),
-                user.getProfilePic());
+                user.getProfilePic(),
+                user.getNotifications());
 
     }
 

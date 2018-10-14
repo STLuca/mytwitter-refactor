@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -33,23 +34,50 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
+                .inMemoryAuthentication()
+                .withUser("admin").password(passwordEncoder.encode("adminpassword123")).roles("ADMIN");
+        auth
                 .userDetailsService(new CustomUserService(userRepository))
                 .passwordEncoder(passwordEncoder);
+
     }
 
     //instead of hard typing 'api' here, should read the value from properties
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http
+                //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                //.httpBasic().and()
+                .authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/register").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/api/login").permitAll()
                 .antMatchers("/registration").permitAll()
                 .antMatchers(HttpMethod.GET, "/api").permitAll()
-                .antMatchers(HttpMethod.POST,"/api/users").permitAll()
-                .antMatchers(HttpMethod.PATCH, "/api/tweets/*").denyAll()
-                .antMatchers(HttpMethod.PATCH, "/api/follows/*").denyAll()
-                .antMatchers(HttpMethod.PATCH, "/api/likes/*").denyAll()
+                //USERS
+                .antMatchers(HttpMethod.GET, "/api/users/**").authenticated()
+                .antMatchers(HttpMethod.POST, "/api/users").permitAll()
+                .antMatchers(HttpMethod.PATCH, "/api/users/*").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/api/users/*").authenticated()
+                .antMatchers("/api/users/**").denyAll()
+                //TWEETS
+                .antMatchers(HttpMethod.GET, "/api/tweets/**").authenticated()
+                .antMatchers(HttpMethod.POST, "/api/tweets").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/api/tweets/*").authenticated()
+                .antMatchers("/api/tweets/**").denyAll()
+                //FOLLOWS
+                .antMatchers(HttpMethod.GET, "/api/follows/**").authenticated()
+                .antMatchers(HttpMethod.POST, "/api/follows").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/api/follows/*").authenticated()
+                .antMatchers("/api/follows/**").denyAll()
+                //LIKES
+                .antMatchers(HttpMethod.GET, "/api/likes/**").authenticated()
+                .antMatchers(HttpMethod.POST, "/api/likes").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/api/likes/*").authenticated()
+                .antMatchers("/api/likes/**").denyAll()
+
+                .antMatchers("/actuator/**").hasRole("ADMIN")
                 .antMatchers("/**").authenticated()
                 .and().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
@@ -63,7 +91,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/font/**", "/img/**", "/scss/**");
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/font/**", "/img/**", "/scss/**",
+                        "/v2/api-docs", "/configuration/**", "/swagger-resources/**", "/swagger-ui.html", "/webjars/**", "/csrf");
     }
 
 

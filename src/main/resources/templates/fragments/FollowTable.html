@@ -1,0 +1,26 @@
+<div th:fragment="follow_table(users)">
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">USERNAME</th>
+            <th scope="col">PROFILE PIC</th>
+            <th scope="col">TWEETS</th>
+            <th scope="col">FOLLOWING NO</th>
+            <th scope="col">FOLLOWERS NO</th>
+            <th scope="col">FOLLOWING</th>
+            <th scope="col">FOLLOWER</th>
+            <th scope="col">FOLLOWED DATE</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.userVal.user.id}">ID</td>
+            <td th:text="${user.userVal.username}">ID</td>
+            <td th:text="${user.userVal.profilePic}">ID</td>
+            <td th:text="${user.userVal.tweet_count}">ID</td>
+            <td th:text="${user.userVal.following_count}">ID</td>
+            <td th:text="${user.userVal.follower_count}">ID</td>
+            <td th:text="${user.userVal.following}">ID</td>
+            <td th:text="${user.userVal.follower}">ID</td>
+            <td th:text="${user.followed_date}">ID</td>
+        </tr>
+    </table>
+</div>

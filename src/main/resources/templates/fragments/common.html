@@ -11,29 +11,34 @@
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
+            <!--
             <li class="nav-item">
                 <a class="nav-link waves-effect waves-light" href="#">Features</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link waves-effect waves-light" href="#">Pricing</a>
             </li>
+            -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown
+                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search
                 </a>
                 <div class="dropdown-menu dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
-                    <a class="dropdown-item waves-effect waves-light" href="#">Action</a>
-                    <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
-                    <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
+                    <a class="dropdown-item waves-effect waves-light" href="#">User</a>
+                    <a class="dropdown-item waves-effect waves-light" href="#">Tweet</a>
                 </div>
             </li>
         </ul>
 
         <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto nav-flex-icons">
             <li class="nav-item">
-                <a class="nav-link waves-effect waves-light">1
+                <a class="nav-link waves-effect waves-light" th:href="@{/notifications}">
+                    <span sec:authentication="principal.notifications"></span>
                     <i class="fa fa-envelope"></i>
                 </a>
             </li>
+
+
+
             <li class="nav-item">
                 <a class="nav-link waves-effect waves-light" th:href="@{|/user/${#authentication.principal.username}|}" sec:authentication="principal.username"></a>
             </li>
@@ -81,7 +86,7 @@
 </nav>
 
 <!--Pagination -->
-<nav th:fragment="pagination(page)" aria-label="pagination example">
+<nav th:fragment="pagination1(page)" aria-label="pagination example">
     <ul class="pagination pagination-circle pg-blue mb-0">
 
 
@@ -114,3 +119,19 @@
         -->
     </ul>
 </nav>
+
+<!--Pagination blue-->
+<nav th:fragment="pagination(pageLinks)">
+
+
+    <ul class="pagination justify-content-center pg-blue">
+
+        <!--Numbers-->
+
+        <li th:each="pageLink : ${pageLinks}" th:class="${pageLink.active} ? 'active page-item' : 'page-item'">
+            <a th:href="${pageLink.link}" th:text="${pageLink.pageNumber}" class="page-link"></a>
+        </li>
+
+    </ul>
+</nav>
+<!--/Pagination blue-->

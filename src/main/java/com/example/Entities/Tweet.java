@@ -20,7 +20,7 @@ import java.util.Set;
 public class Tweet {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private TweetMessage message;
@@ -38,7 +38,10 @@ public class Tweet {
             name = "TAGS",
             joinColumns = @JoinColumn(name = "TWEET_ID"))
     @Column(name = "TAG_TEXT")
-    protected Set<String> tags = new HashSet<String>();
+    protected Set<String> tags = new HashSet<>();
+
+    @ManyToMany
+    private Set<User> mentions = new HashSet<>();
 
     @CreatedDate
     private Long createdDate;

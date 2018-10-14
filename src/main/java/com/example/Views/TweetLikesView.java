@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Immutable
-@Table(name = "userslikesview")
+@Table(name = "tweetlikesview")
 @Value
 public class TweetLikesView {
 

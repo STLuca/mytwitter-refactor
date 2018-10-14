@@ -2,30 +2,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="base :: common_header(~{::title}, ~{::link})">
+<head th:replace="fragments/base :: common_header(~{::title}, ~{::link})">
     <title>Home</title>
 
     <!--custom css -->
     <link href="../static/css/styles/home.css" th:href="@{/css/styles/home.css}" rel="stylesheet">
+    <link th:href="@{/css/styles/tweetGrid.css}" rel="stylesheet">
 </head>
 
 <body>
-    <nav th:replace="common :: nav1"/>
+    <nav th:replace="fragments/common :: nav1"/>
     home page
 
 
+    <!--
     <table>
         <tr>
             <th>message</th>
         </tr>
-        <div th:each="tweet:${tweets.content}">
+         <div th:each="tweet:${tweets.content}">
             <section th:replace="tweet :: tweet1(${tweet})"></section>
         </div>
     </table>
+     -->
+    <div th:replace="fragments/TweetTable :: tweet_table(${tweets.content})"></div>
 
+    <!--
+    <div th:each="tweet : ${tweets.content}">
+        <div class="tweet" th:replace="fragments/TweetGrid :: tweet_grid(${tweet.tweetVal})"></div>
+    </div>
+    -->
+    <nav th:replace="fragments/common :: pagination(${pageLinks})"></nav>
 
-    <nav th:replace="common :: pagination(${tweets})"></nav>
-
-    <th:block th:replace="base :: scripts"/>
+    <th:block th:replace="fragments/base :: scripts"/>
 </body>
 </html>

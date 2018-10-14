@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Value;
 import org.hibernate.annotations.Immutable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -26,6 +27,9 @@ public class UsersLikesView {
     private Long querying_user;
 
     @JsonIgnore
+    @Column(name = "likedby")
     private Long likedBy;
 
+    @JsonIgnore
+    private String likedByUsername;
 }
