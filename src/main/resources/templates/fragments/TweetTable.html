@@ -40,7 +40,9 @@
             </td>
             <td>
                 <ul>
-                    <li th:each="mention : ${tweet.tweetVal.mentions}" th:text="${mention.username}"></li>
+                    <li th:each="mention : ${tweet.tweetVal.mentionsList}" >
+                        <a th:href="${mention.link}" th:text="${mention.username}"></a>
+                    </li>
                 </ul>
             </td>
         </tr>

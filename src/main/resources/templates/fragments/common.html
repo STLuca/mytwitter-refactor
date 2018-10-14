@@ -40,7 +40,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link waves-effect waves-light" th:href="@{|/user/${#authentication.principal.username}|}" sec:authentication="principal.username"></a>
+                <a class="nav-link waves-effect waves-light" th:href="@{|/user/${#authentication.principal.username}/tweets|}" sec:authentication="principal.username"></a>
             </li>
             <li class="nav-item avatar dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

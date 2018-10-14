@@ -21,7 +21,7 @@
         <th scope="col">FOLLOWING</th>
         <th scope="col">FOLLOWER</th>
     </tr>
-    <tr>
+    <tr th:if="${user != null}">
         <td th:text="${user.userVal.user.id}">ID</td>
         <td th:text="${user.userVal.username}">ID</td>
         <td th:text="${user.userVal.profilePic}">ID</td>

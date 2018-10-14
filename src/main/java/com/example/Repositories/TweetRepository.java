@@ -16,12 +16,12 @@ import java.util.List;
 public interface TweetRepository extends PagingAndSortingRepository<Tweet, Long> {
 
     @Override
-    @PreAuthorize("#tweet.html?.user?.id == principal?.id")
-    Tweet save(@Param("tweet.html") Tweet tweet);
+    @PreAuthorize("#tweet?.user?.id == principal?.id")
+    Tweet save(@Param("tweet") Tweet tweet);
 
     @Override
-    @PreAuthorize("#tweet.html?.user?.id == principal?.id")
-    void delete(@Param("tweet.html") Tweet tweet);
+    @PreAuthorize("#tweet?.user?.id == principal?.id")
+    void delete(@Param("tweet") Tweet tweet);
 
     @Query("SELECT t FROM TweetView t WHERE t.tweetVal.tweet.id = :tweetID AND t.querying_user = ?#{principal.id}")
     TweetView getTweet(

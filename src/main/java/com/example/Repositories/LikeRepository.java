@@ -10,11 +10,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 public interface LikeRepository extends PagingAndSortingRepository<Like, Long> {
 
     @Override
-    @PreAuthorize("like?.user?.id == principal?.id")
+    @PreAuthorize("#like?.user?.id == principal?.id")
     Like save(@Param("like") Like like);
 
     @Override
-    @PreAuthorize("like?.user?.id == principal?.id")
+    @PreAuthorize("#like?.user?.id == principal?.id")
     void delete(@Param("like") Like like);
 
 }
