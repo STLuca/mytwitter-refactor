@@ -1,21 +1,24 @@
-# mytwitter-refactor
+# Example api usage
 
-Example api usage
-
-Create a user
+### Create a user
+```
 curl -i -H "Content-Type:application/json"
 	-d '{ "username" : "bob", 
         "password" : "password", 
         "profilePic" : "https://amp.businessinsider.com/images/5899ffcf6e09a897008b5c04-750-750.jpg" }'
 	http://localhost:8080/api/users
+```
   
-login
+### login
+```
 curl -i -H "Content-Type:application/x-www-form-urlencoded"
   -c cookies
   -d username=bob -d password=mypassword
   localhost:8080/login
+```
 
-Create a tweet
+### Create a tweet
+```
 curl -i -H "Content-Type:application/json" 
   -b cookies
 	-d '{ 	
@@ -26,8 +29,10 @@ curl -i -H "Content-Type:application/json"
         "mentions" : [ "https://spring-boot-twitter.cfapps.io/api/users/3" ]
       }' 
 http://localhost:8080/api/tweets 
+```
 
-Like a tweet
+### Like a tweet
+```
 curl -i -H "Content-Type:application/json"
   -b cookies
 	-d '{
@@ -35,8 +40,10 @@ curl -i -H "Content-Type:application/json"
         "tweet" : "https://spring-boot-twitter.cfapps.io/api/tweets/3"
       }'
 http://localhost:8080/api/likes 
+```
 
-Follow a user
+### Follow a user
+```
 curl -i -H "Content-Type:application/json"
   -b cookies
 	-d '{
@@ -44,6 +51,9 @@ curl -i -H "Content-Type:application/json"
         "follower" : "https://spring-boot-twitter.cfapps.io/api/tweets/3"
       }'
 http://localhost:8080/api/follows
+```
 
-Deleting a resource
+### Deleting a resource
+```
 curl -b cookies -X DELETE https://spring-boot-twitter.cfapps.io/api/tweets/3
+```
